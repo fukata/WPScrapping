@@ -79,12 +79,14 @@ function sc_register_scrapping($params) {
 	}
 
 	// postmeta
-	update_post_meta($post_id, 'sc_scrapping_url', $params['url']);
+	update_post_meta($post_id, Scrap::META_URL, $params['url']);
+	update_post_meta($post_id, Scrap::META_TITLE, $params['title']);
 }
 
 function sc_post_content($params) {
-	$content = "<p>{$params['description']}</p>\n";
-	$content .= "<p><a href=\"{$params['url']}\">{$params['title']}</a></p>";
+	$content = "{$params['description']}";
+	//$content = "<p>{$params['description']}</p>\n";
+	//$content .= "<p><a href=\"{$params['url']}\">{$params['title']}</a></p>";
 	return $content;
 }
 

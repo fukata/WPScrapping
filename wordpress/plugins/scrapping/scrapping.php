@@ -7,5 +7,7 @@ Version: 0.1.0
 Author: Tatsuya Fukata
 Author URI: http://fukata.org
 */
+require_once(dirname(__FILE__).'/scrap.php');
 
+add_filter('the_content', array(Scrap, 'conv_content'));
 ?>
