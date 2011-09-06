@@ -1,6 +1,7 @@
 $(function(){
-	$('#debug').text('debug mode');
 	$('#register').click(function(){
+		$('#register').attr('disabled', true).val('Registering...');
+
 		var url = '';
 		var data = {
 			title: $('#title').val(),
@@ -15,8 +16,11 @@ $(function(){
 			data: data,
 			dataType: 'json',
 			success: function(data, dataType) {
+				$('#console').empty();
 				$('#errors').empty();
-				if ( "errors" in data ) {
+				if ( data.status ) {
+					$('#console').text('Registered!!');
+				} else if ( "errors" in data ) {
 					var errors = "";
 					for (var i=0; i<data.errors.length; i++) {
 						errors += data.errors[i];
@@ -28,10 +32,9 @@ $(function(){
 			error: function(request, textStatus, errorThrown) {
 			},
 			complete: function(request, textStatus) {
-				$('#debug').text(textStatus);
+				$('#register').attr('disabled', false).val('Register');
 			}
 		});
-		$('#debug').text('submited');
 	});
 
 	chrome.extension.getBackgroundPage().current_page_info(function(page_info) {
