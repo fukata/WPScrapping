@@ -72,7 +72,12 @@ function sc_register_scrapping($params) {
 		);
 	}
 
-	// update postmeta
+	// tags
+	if ( strlen($params['tags']) > 0 ) {
+		wp_add_post_tags($post_id, $params['tags']);
+	}
+
+	// postmeta
 	update_post_meta($post_id, 'sc_scrapping_url', $params['url']);
 }
 
