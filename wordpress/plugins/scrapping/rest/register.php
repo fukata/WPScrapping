@@ -20,6 +20,7 @@ function sc_get_params() {
 	$params['url'] = trim($_POST['url']);
 	$params['title'] = trim($_POST['title']);
 	$params['description'] = trim($_POST['description']);
+	$params['categories'] = $_POST['categories'];
 	$params['tags'] = trim($_POST['tags']);
 
 	return $params;
@@ -88,7 +89,7 @@ function sc_post_content($params) {
 }
 
 function sc_post_category($params) {
-	return '';
+	return $params['categories'];
 }
 
 function sc_display_error($errors) {
