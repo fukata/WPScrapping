@@ -7,6 +7,7 @@ $(function(){
 			title: $('#title').val(),
 			url: $('#url').val(),
 			tags: $('#tags').val(),
+			categories: [],
 			description: $('#description').val()
 		};
 		$.ajax({
