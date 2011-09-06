@@ -2,13 +2,13 @@
 require_once(dirname(__FILE__).'/../check_settings.php');
 
 $params = sc_get_params();
-$errors = sc_invalid_params($parmas);
-if ( !empty($errors) ) {
+$errors = sc_invalid_params($params);
+if ( ! empty($errors) ) {
 	sc_display_error($errors);
 }
 
 $errors = sc_register_scrapping($params);
-if ( !empty($errors) ) {
+if ( ! empty($errors) ) {
 	sc_display_error($errors);
 }
 
@@ -16,6 +16,7 @@ sc_display_success();
 
 function sc_get_params() {
 	$params = array();
+
 	$params['url'] = trim($_POST['url']);
 	$params['title'] = trim($_POST['title']);
 	$params['description'] = trim($_POST['description']);
@@ -31,7 +32,7 @@ function sc_invalid_params($params) {
 	$url = $params['url'];
 	if ( strlen($url) == 0 ) {
 		$errors[] = "Required URL.";
-	} else if ( ! preg_match('/^(https?)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $url ) {
+	} else if ( ! preg_match('/^(https?)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $url) ) {
 		$errors[] = "Invalid URL is Regex.";
 	} else if ( sc_already_post_by_url($url) ) {
 		$errors[] = "Already registered post.";
@@ -86,6 +87,7 @@ function sc_post_category($params) {
 }
 
 function sc_display_error($errors) {
+	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/json");
 	echo json_encode(array(
 		'status' => 0,
@@ -95,6 +97,7 @@ function sc_display_error($errors) {
 }
 
 function sc_display_success() {
+	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/json");
 	echo json_encode(array(
 		'status' => 1

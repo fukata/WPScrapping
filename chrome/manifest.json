@@ -1,0 +1,22 @@
+{
+  "name": "WordPress Scrapping Client",
+  "version": "0.1",
+  "description": "WordPress Scrapping Client",
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "popup": "popup.html"
+  },
+  "background_page": "background.html",
+  "icons": {
+    "128": "images/favicon128.png",
+    "16": "images/favicon16.png",
+    "32": "images/favicon32.png",
+    "48": "images/favicon48.png"
+  },
+  "permissions": [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ]
+}
