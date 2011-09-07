@@ -81,6 +81,7 @@ function sc_register_scrapping($params) {
 	// postmeta
 	update_post_meta($post_id, Scrap::META_URL, $params['url']);
 	update_post_meta($post_id, Scrap::META_TITLE, $params['title']);
+	update_post_meta($post_id, Scrap::META_VIEW_COUNT, 0);
 }
 
 function sc_post_content($params) {
