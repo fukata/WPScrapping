@@ -56,7 +56,7 @@ function sc_invalid_params($params) {
 
 function sc_already_post_by_url($url) {
 	global $wpdb;
-	return $wpdb->get_var( $wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'sc_scrapping_url' AND meta_value = '%s'", $url) );
+	return $wpdb->get_var( $wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '%s' AND meta_value = '%s'", Scrap::META_URL, $url) );
 }
 
 function sc_register_scrapping($params) {
