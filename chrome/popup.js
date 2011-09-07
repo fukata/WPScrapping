@@ -21,6 +21,7 @@ $(function(){
 				$('#errors').empty();
 				if ( data.status ) {
 					$('#console').text('Registered!!');
+					setTimeout(function(){ window.close(); }, 1000);
 				} else if ( "errors" in data ) {
 					var errors = "";
 					for (var i=0; i<data.errors.length; i++) {
@@ -41,5 +42,6 @@ $(function(){
 	chrome.extension.getBackgroundPage().current_page_info(function(page_info) {
 		$('#title').val(page_info.title);
 		$('#url').val(page_info.url);
+		$('#tags').focus();
 	});
 });
