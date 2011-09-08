@@ -99,3 +99,68 @@ div.scrap div.description a {
 
 #popular_tags span.tag {
 }
+
+#content {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#content div.scrap {
+	border: 1px solid #ccc;
+	text-align: center;
+	padding: 10px;
+}
+
+#description {
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+#prev_scrap,
+#next_scrap {
+	position: fixed;
+	top: 35%;
+	width: 100px;
+	height: 30%;
+}
+
+#prev_scrap {
+	left: 0;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#next_scrap {
+	right: 0;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+#prev_scrap:hover,
+#next_scrap:hover {
+	background-color: #333;
+	color: #fff;
+	opacity: 0.8;
+}
+
+#prev_scrap span.button,
+#next_scrap span.button {
+	font-size: 30px;
+	position: relative;
+	top: 40%;
+	left: 35%;
+}
+
+a.pager {
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}
+a.pager:hover {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
