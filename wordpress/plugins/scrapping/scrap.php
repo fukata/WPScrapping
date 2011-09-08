@@ -74,9 +74,26 @@ class Scrap {
 			$count = get_post_meta($post->ID, self::META_VIEW_COUNT, true);
 			if ( ! $count ) $count = 0;
 			update_post_meta($post->ID, self::META_VIEW_COUNT, ++$count);
+
+			// tags
+			$tags = get_the_terms($post->ID, 'post_tag');
+			foreach ($tags as $tag) {
+				self::logging_tag_view($tag->name, 'post_view', $post->ID);
+			}
 		} else if ( is_tag() ) {
-			//FIXME count up for tag
+			$tag = get_query_var('tag');
+			self::logging_tag_view($tag, 'search');
 		}
+	}
+
+	public static function logging_tag_view($tag, $view_type, $post_id=null) {
+		global $wpdb;
+		$wpdb->insert('sc_tag_view_logs', array(
+			'tag' => $tag,
+			'view_type' => $view_type,
+			'post_id' => $post_id,
+			'logged_at' => date("Y-m-d H:i:s")
+		));
 	}
 
 	public static function get_popular_scraps($limit=10) {
@@ -91,6 +108,6 @@ class Scrap {
 		global $wpdb;
 		if (!trim($tag)) return array();
 
-		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN wp_terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND t.name = '%s' AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $tag, $limit) );
+		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN wp_terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND t.name = '%s' AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $limit) );
 	}
 }

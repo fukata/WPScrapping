@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS sc_tag_view_logs (
 	id INTEGER AUTO_INCREMENT,
 	tag VARCHAR(255) NOT NULL,
 	view_type VARCHAR(16) NOT NULL,
+	post_id INTEGER NULL,
 	logged_at DATETIME NOT NULL,
 	PRIMARY KEY(id)
 );
