@@ -2,12 +2,12 @@ $(function(){
 	$('#register').click(function(){
 		$('#register').attr('disabled', true).val('Registering...');
 
-		var url = 'http://wp3.org/wp-content/plugins/scrapping/api/register.php';
+		var url = '';
 		var data = {
 			title: $('#title').val(),
 			url: $('#url').val(),
 			tags: $('#tags').val(),
-			categories: ["5"],
+			categories: [],
 			description: $('#description').val(),
 			status: $('#status').val()
 		};
