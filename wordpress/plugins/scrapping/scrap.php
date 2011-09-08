@@ -65,11 +65,11 @@ class Scrap {
 			if ( ! self::is_scrap($post->ID) ) return;
 
 			// already read
-			if ( $_COOKIE["scrap-{$post->ID}"] ) return;
+			//if ( $_COOKIE["scrap-{$post->ID}"] ) return;
 			// expire a day.
-			$timeout = time() + 86400;
+			//$timeout = time() + 86400;
 			//setcookie("scrap-{$post->ID}", '1', $timeout, SITECOOKIEPATH);
-			setcookie("scrap-{$post->ID}", '1', $timeout, COOKIEPATH, COOKIE_DOMAIN, false);
+			//setcookie("scrap-{$post->ID}", '1', $timeout, COOKIEPATH, COOKIE_DOMAIN, false);
 
 			$count = get_post_meta($post->ID, self::META_VIEW_COUNT, true);
 			if ( ! $count ) $count = 0;
@@ -82,5 +82,8 @@ class Scrap {
 	public static function get_popular_scraps($limit=10) {
 		global $wpdb;
 		return $wpdb->get_results( $wpdb->prepare("SELECT p.*, m.meta_value AS view_count FROM $wpdb->posts AS p INNER JOIN $wpdb->postmeta AS m ON (m.post_id = p.id AND p.post_status='publish') WHERE m.meta_key='%s' ORDER BY m.meta_value DESC, p.post_date DESC LIMIT %d", Scrap::META_VIEW_COUNT, $limit) );
+	}
+
+	public static function get_popular_tags($limit=10) {
 	}
 }
