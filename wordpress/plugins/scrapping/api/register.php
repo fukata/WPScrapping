@@ -22,6 +22,7 @@ function sc_get_params() {
 	$params['description'] = trim($_POST['description']);
 	$params['categories'] = $_POST['categories'];
 	$params['tags'] = trim($_POST['tags']);
+	$params['status'] = trim($_POST['status']);
 
 	return $params;
 }
@@ -51,6 +52,14 @@ function sc_invalid_params($params) {
 		$errors[] = "Required Description.";
 	}
 
+	// status
+	$status = $params['status'];
+	if ( strlen($status) == 0 ) {
+		$errors[] = "Required Post Status.";
+	} else if ( !($status == 'publish' || $status == 'draft') ) {
+		$errors[] = "Post Status is publish or draft.";
+	}
+
 	return $errors;
 }
 
@@ -61,7 +70,7 @@ function sc_already_post_by_url($url) {
 
 function sc_register_scrapping($params) {
 	$post_id = wp_insert_post(array(
-		'post_status' => 'publish',
+		'post_status' => $params['status'],
 		'post_content' => sc_post_content($params),
 		'post_title' => $params['title'],
 		'post_category' => sc_post_category($params),
