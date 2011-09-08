@@ -20,7 +20,7 @@
 				<div class="capture"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'large')?>" class="medium_capture"/></a>
 					<div class="description">
 						<p class="title"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_meta_title($scrap->ID)?>【View:<?=$scrap->view_count?>】</a></p>
-						<p><?=$scrap->post_content?></p>
+						<p><?=Scrap::get_short_description($scrap)?></p>
 					</div>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 			<div class="capture"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'large')?>" class="medium_capture"/></a>
 				<div class="description">
 					<p class="title"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_meta_title($scrap->ID)?></a></p>
-					<p><?=$scrap->post_content?></p>
+					<p><?=Scrap::get_short_description($scrap)?></p>
 				</div>
 			</div>
 		</div>

@@ -18,7 +18,7 @@
 	<a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'large')?>" class="medium_capture"/></a>
 </div>
 
-<p><?=$post->post_content?></p>
+<p><?=Scrap::get_description($post)?></p>
 
 <script>(function(d){
   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}

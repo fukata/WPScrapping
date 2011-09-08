@@ -95,3 +95,10 @@ div.scrap div.description p.title a {
 div.scrap div.description a {
 	color: #35E6FF;
 }
+
+#popular_tags {
+}
+
+#popular_tags span.tag {
+	margin: 0 5px;
+}
