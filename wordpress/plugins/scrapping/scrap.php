@@ -102,12 +102,14 @@ class Scrap {
 	}
 
 	public static function get_popular_tags($limit=10) {
+		global $wpdb;
+		return $wpdb->get_results( $wpdb->prepare("SELECT r.* FROM sc_tag_rankings AS r WHERE r.status = 'open' ORDER BY r.score DESC LIMIT %d", $limit) );
 	}
 
 	public static function get_scrap_by_tag($tag='',$limit=10) {
 		global $wpdb;
 		if (!trim($tag)) return array();
 
-		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN wp_terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND t.name = '%s' AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $limit) );
+		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN wp_terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND t.name = '%s' AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $tag, $limit) );
 	}
 }

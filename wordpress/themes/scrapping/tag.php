@@ -2,9 +2,9 @@
 
 <h1>Tag</h1>
 
-Tag: <?=get_query_var('tag')?>
+Tag: <?=urldecode(get_query_var('tag'))?>
 
-<?php $scraps = Scrap::get_scrap_by_tag(get_query_var('tag')); ?>
+<?php $scraps = Scrap::get_scrap_by_tag(urldecode(get_query_var('tag'))); ?>
 <?php if ( $scraps ) { ?>
 	<div id="search_scraps">
 		<?php foreach ($scraps as $scrap) { ?>

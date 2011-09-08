@@ -5,7 +5,7 @@
 <?php if ( $popular_tags ) { ?>
 	<div id="popular_tags">
 		<?php foreach ($popular_tags as $tag) { ?>
-			<div class="tag"><?=htmlspecialchars($tag->name)?></div>
+			<span class="tag"><a href="<?=get_term_link($tag->tag,'post_tag')?>" rel="tag"><?=htmlspecialchars($tag->tag)?></a></span>
 		<?php } ?>
 	</div>
 <?php } ?>
