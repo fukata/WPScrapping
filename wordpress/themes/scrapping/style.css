@@ -54,6 +54,7 @@ a img {
 #latest_scraps {
 }
 
+#search_scraps div.scrap,
 #popular_scraps div.scrap,
 #latest_scraps div.scrap {
 	float: left;

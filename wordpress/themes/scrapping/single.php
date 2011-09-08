@@ -2,13 +2,14 @@
 
 <h1><?=Scrap::get_meta_title($post->ID)?></h1>
 <div class="postmeta">
-	<span class="view_count"><?=Scrap::get_meta_view_count($post->ID)?> views</span>
+	<span class="view_count">閲覧回数:<?=Scrap::get_meta_view_count($post->ID)?></span>
+|
 	<?php
 		$tags = get_the_tag_list( '', ', ' );
 		if ( $tags ) {
 	?>
 	<span class="tags">
-    	<?php printf( __( '<span class="%1$s">Tag</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags ); ?>
+    	<?php printf( __( '<span class="%1$s">タグ:</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags ); ?>
     </span>
     <?php } ?>
 </div>
