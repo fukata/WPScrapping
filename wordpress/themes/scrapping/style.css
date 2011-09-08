@@ -27,6 +27,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	margin: 0;
 	padding: 0;
 	vertical-align: baseline;
+	font-size: small;
 }
 
 ol, ul {
@@ -37,15 +38,12 @@ a img {
 	border: none;
 }
 
-#header,
-#main {
+#header {
 	width: 100%;
 }
 
-#header {
-}
-
 #main {
+	width: 100%;
 }
 
 #container {
@@ -58,9 +56,9 @@ a img {
 #popular_scraps div.scrap,
 #latest_scraps div.scrap {
 	float: left;
-	width: 402px;
-	height: 302px;
-	margin: 10px;
+	width: 202px;
+	height: 152px;
+	margin: 5px;
 	position: relative;
 }
 
@@ -69,8 +67,8 @@ a img {
 }
 
 img.medium_capture {
-	width: 400px;
-	height: 300px;
+	width: 200px;
+	height: 150px;
 }
 
 div.scrap div.description {
@@ -78,7 +76,7 @@ div.scrap div.description {
 	bottom: 0;
 	background-color: #000;
 	color: #fff;
-	opacity: 0.6;
+	opacity: 0.8;
 	width: 100%;
 }
 
@@ -100,5 +98,4 @@ div.scrap div.description a {
 }
 
 #popular_tags span.tag {
-	margin: 0 5px;
 }

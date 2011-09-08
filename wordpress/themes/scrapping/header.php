@@ -18,3 +18,5 @@
 <body>
 
 <h1><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
+
+<div id="main">

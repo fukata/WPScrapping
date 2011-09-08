@@ -1,3 +1,5 @@
+</div> <!-- main -->
+
 <!-- Place this tag in your head or just before your close body tag -->
 <script type="text/javascript" src="http://apis.google.com/js/plusone.js">
   {lang: 'ja'}

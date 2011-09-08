@@ -44,8 +44,16 @@ class Scrap {
 		return get_post_meta($post_id, self::META_URL, true);
 	}
 
-	public static function get_meta_title($post_id) {
-		return get_post_meta($post_id, self::META_TITLE, true);
+	public static function get_meta_title($post_id, $len=0, $append='...') {
+		$title = get_post_meta($post_id, self::META_TITLE, true);
+		if ( $len > 0 && mb_strlen($title) > $len ) {
+			$title = mb_substr($title, 0, $len) . $append;
+		}
+		return $title;
+	}
+
+	public static function get_short_title($post_id, $len=30, $append='...') {
+		return self::get_meta_title($post_id, $len, $append);
 	}
 	
 	public static function get_meta_view_count($post_id) {
@@ -60,6 +68,8 @@ class Scrap {
 
 	public static function countup() {
 		global $post, $current_site;
+		if ( is_user_logged_in() ) return;
+
 		if ( is_single() ) {
 			// count up for post
 			if ( ! self::is_scrap($post->ID) ) return;
