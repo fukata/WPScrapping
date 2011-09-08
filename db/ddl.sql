@@ -1,0 +1,20 @@
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS sc_tag_view_logs (
+	id INTEGER AUTO_INCREMENT,
+	tag VARCHAR(255) NOT NULL,
+	view_type VARCHAR(16) NOT NULL,
+	logged_at DATETIME NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS sc_tag_rankings (
+	rank INT NOT NULL,
+	tag VARCHAR(255) NOT NULL,
+	score INT NOT NULL,
+	status VARCHAR(16) NOT NULL,
+	rankinged_at DATETIME NOT NULL,
+	update_at DATETIME NOT NULL
+);
+
+COMMIT;
