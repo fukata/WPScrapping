@@ -11,4 +11,5 @@ require_once(dirname(__FILE__).'/scrap.php');
 
 //add_filter('the_content', array(Scrap, 'conv_content'));
 add_action('parse_query', array(Scrap, 'countup'));
+add_action('wp_head', array(Scrap, 'ogp_head'));
 ?>

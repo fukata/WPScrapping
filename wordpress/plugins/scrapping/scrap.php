@@ -132,6 +132,9 @@ class Scrap {
 			'tag' => $tag,
 			'view_type' => $view_type,
 			'post_id' => $post_id,
+			'ua' => $_SERVER['HTTP_USER_AGENT'],
+			'referrer' => $_SERVER['HTTP_REFERER'],
+			'ip' => $_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'],
 			'logged_at' => date("Y-m-d H:i:s")
 		));
 	}
@@ -178,5 +181,20 @@ class Scrap {
 
 	public static function recent_information($limit=10) {
 		return get_posts("numberposts=$limit&category=".self::CAT_INFO);
+	}
+
+	public static function ogp_head() {
+		global $post;
+		if ( self::is_scrap($post->ID) ) {
+			echo "<!-- BEGIN: OGP by Scrapping -->\n";
+			echo '<meta property="og:title" content="'.self::get_meta_title($post->ID).'" />'."\n";
+			echo '<meta property="og:type" content="article" />'."\n";
+			echo '<meta property="og:image" content="'.self::get_thumbnail_url($post->ID, 'medium').'" />'."\n";
+			echo '<meta property="image_src" content="'.self::get_thumbnail_url($post->ID, 'medium').'" />'."\n";
+			echo '<meta property="og:url" content="'.get_permalink($post->ID).'" />'."\n";
+			echo '<meta property="og:site_name" content="'.get_bloginfo('name').'" />'."\n";
+			echo '<meta property="og:description" content="'.self::get_short_description($post, 100).'" />'."\n";
+			echo "<!-- END: OGP by Scrapping -->\n";
+		}
 	}
 }
