@@ -31,11 +31,14 @@ function sc_option() {
 //	global $table_prefix, $BLOG_ID;
 	return (Object) array(
 //		'table_prefix' => "{$table_prefix}{$BLOG_ID}",
-		'range_sql' => "1=1"
+		'range' => false
 	);
 }
 
 function sc_publish_rankings() {
+	$option = sc_option();
+	if ( ! $option->range ) return array();
+
 	$sql = "SELECT r.* FROM sc_tag_rankings AS r WHERE r.status = 'publish';";
 	$rs = mysql_query($sql);
 	$rankings = array();
@@ -47,7 +50,7 @@ function sc_publish_rankings() {
 
 function sc_range_calculate(&$rankings) {
 	$option = sc_option();
-	$sql = "SELECT l.* FROM sc_tag_view_logs AS l WHERE {$option->range_sql};";
+	$sql = "SELECT l.* FROM sc_tag_view_logs AS l;";
 	$rs = mysql_query($sql);
 	while ( $r = mysql_fetch_object($rs) ) {
 		if ( !isset($rankings[$r->tag]) ) {

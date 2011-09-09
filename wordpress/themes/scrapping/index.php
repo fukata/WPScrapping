@@ -4,6 +4,16 @@
 	<p><a href="http://ngigroup.com">ngi group</a>の広告系エンジニアが気になった記事をスクラップしてます。たまに、自分でも記事書きます。</p>
 </div>
 
+<?php $info_posts = Scrap::recent_information(); ?>
+<?php if ( $info_posts ) { ?>
+<h2>お知らせ</h2>
+<div id="information">
+	<?php foreach ($info_posts as $post) { the_post(); ?>
+		<p><?=get_the_date()?> <a href="<?=get_permalink($post->ID)?>"><?=the_title()?></a></p>
+	<?php } ?>
+</div>
+<?php } ?>
+
 <h2>人気タグ</h2>
 <?php $popular_tags = Scrap::get_popular_tags(50); ?>
 <?php if ( $popular_tags ) { ?>
@@ -35,7 +45,7 @@
 <br clear="all"/>
 
 <h2>最新スクラップ</h2>
-<?php $latest_scraps = get_posts('numberposts=10&category=scrap'); ?>
+<?php $latest_scraps = Scrap::recent_scraps(); ?>
 <?php if ( $latest_scraps ) { ?>
 	<div id="latest_scraps">
 	<?php foreach ($latest_scraps as $scrap) { ?>

@@ -80,10 +80,11 @@ a img {
 	margin-bottom: 5px;
 	background-color: #333;
 	color: #fff;
-	width: 100px;
 	border-top: 2px solid #000;
 	border-right: 2px solid #000;
 	border-bottom: 2px solid #000;
+	min-width: 100px;
+	display: inline-block;
 }
 
 #container {
@@ -187,6 +188,17 @@ div.scrap div.description a {
 	color: #fff;
 	opacity: 0.8;
 }
+#prev_scrap:hover {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+#next_scrap:hover {
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
 
 #prev_scrap span.button,
 #next_scrap span.button {
@@ -219,4 +231,12 @@ a.pager:hover {
 
 #footer a {
 	color: #fff;
+}
+
+#page_content {
+	
+}
+
+#information {
+	margin-bottom: 5px;
 }

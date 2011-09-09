@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 
-<h1>Tag</h1>
-
-Tag: <?=urldecode(get_query_var('tag'))?>
+<h2>Tag: <?=urldecode(get_query_var('tag'))?></h2>
 
 <?php $scraps = Scrap::get_scrap_by_tag(urldecode(get_query_var('tag'))); ?>
 <?php if ( $scraps ) { ?>

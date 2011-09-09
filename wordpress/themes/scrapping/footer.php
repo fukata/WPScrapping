@@ -1,3 +1,5 @@
+<br clear="all"/>
+
 </div> <!-- main -->
 
 <div id="footer">

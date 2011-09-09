@@ -2,9 +2,14 @@
 
 class Scrap {
 
+	const CAT_INFO = 56;
+	const CAT_SCRAP = 5;
+
 	const META_URL = 'sc_url';
 	const META_TITLE = 'sc_title';
 	const META_VIEW_COUNT = 'sc_view_count';
+
+	const COOKIE_NAME = 'sc';
 
 	private function __constcurt() {
 	}
@@ -37,7 +42,7 @@ class Scrap {
 	}
 
 	public static function scrap_cats() {
-		return array('5');
+		return array(self::CAT_SCRAP);
 	}
 
 	public static function get_meta_url($post_id) {
@@ -66,21 +71,38 @@ class Scrap {
 		return "http://capture.heartrails.com/$size?$url";
 	}
 
-	public static function countup() {
+	public static function is_logged_view_post($post_id) {
+		$cookie = self::logged_cookie();
+		return isset($cookie["view_post-{$post_id}"]) && $cookie["view_post-{$post_id}"];
+	}
+
+	public static function is_logged_search_tag($tag) {
+		$cookie = self::logged_cookie();
+		return isset($cookie["search-{$tag}"]) && $cookie["search-{$tag}"];
+	}
+
+	public static function logged_cookie() {
+		$cookie = isset($_COOKIE[self::COOKIE_NAME]) ? unserialize($_COOKIE[self::COOKIE_NAME]) : array();
+		return $cookie;
+	}
+
+	public static function countup($wp_query) {
 		global $post, $current_site;
 		if ( is_user_logged_in() ) return;
 
 		if ( is_single() ) {
 			// count up for post
 			if ( ! self::is_scrap($post->ID) ) return;
-
 			// already read
-			//if ( $_COOKIE["scrap-{$post->ID}"] ) return;
-			// expire a day.
-			//$timeout = time() + 86400;
-			//setcookie("scrap-{$post->ID}", '1', $timeout, SITECOOKIEPATH);
-			//setcookie("scrap-{$post->ID}", '1', $timeout, COOKIEPATH, COOKIE_DOMAIN, false);
+			//if ( self::is_logged_view_post($post->ID) ) return;
 
+			// expire a day.
+/*
+			$timeout = time() + 86400;
+			$cookie = self::logged_cookie();
+			$cookie["view_post-{$post->ID}"] = 1;
+			setcookie(self::COOKIE_NAME, serialize($cookie), $timeout, SITECOOKIEPATH);
+*/
 			$count = get_post_meta($post->ID, self::META_VIEW_COUNT, true);
 			if ( ! $count ) $count = 0;
 			update_post_meta($post->ID, self::META_VIEW_COUNT, ++$count);
@@ -92,7 +114,15 @@ class Scrap {
 			}
 		} else if ( is_tag() ) {
 			$tag = urldecode(get_query_var('tag'));
+			//if ( self::is_logged_search_tag($tag) ) return;
+
 			self::logging_tag_view($tag, 'search');
+/*
+			$timeout = time() + 86400;
+			$cookie = self::logged_cookie();
+			$cookie["search-$tag"] = 1;
+			setcookie(self::COOKIE_NAME, serialize($cookie), $timeout, SITECOOKIEPATH);
+*/
 		}
 	}
 
@@ -125,7 +155,7 @@ class Scrap {
 
 	public static function get_short_description($post, $len=50, $append='...') {
 		$content = $post->post_content;
-		if ( strlen($content)==0 ) return '';
+		if ( strlen($content) == 0 ) return '';
 
 		$content = str_replace(array("\r\n","\r","\n"), '', $content);
 		if ( $len > 0 && mb_strlen($content) > $len ) {
@@ -140,5 +170,13 @@ class Scrap {
 	
 		$content = nl2br($content);
 		return $content;
+	}
+
+	public static function recent_scraps($limit=10) {
+		return get_posts("numberposts=$limit&category=".self::CAT_SCRAP);
+	}
+
+	public static function recent_information($limit=10) {
+		return get_posts("numberposts=$limit&category=".self::CAT_INFO);
 	}
 }
