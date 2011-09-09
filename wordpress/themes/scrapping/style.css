@@ -55,6 +55,7 @@ a img {
 #header_navi {
 	text-align: right;
 	padding: 3px 5px;
+	border-bottom: 2px solid #000;
 }
 
 #logo {
@@ -65,6 +66,17 @@ a img {
 #main {
 	width: 100%;
 	margin-top: 25px;
+}
+
+#main h2 {
+	padding: 5px 30px 5px 5px;
+	margin-bottom: 5px;
+	background-color: #333;
+	color: #fff;
+	width: 100px;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	border-bottom: 2px solid #000;
 }
 
 #container {
@@ -116,6 +128,7 @@ div.scrap div.description a {
 }
 
 #popular_tags {
+	margin-bottom: 5px;
 }
 
 #popular_tags span.tag {
