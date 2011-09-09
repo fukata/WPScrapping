@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div id="site_description">
-	<p><a href="http://ngigroup.com">ngi group</a>の広告系エンジニアが気になった記事をスクラップしてます。たまに、自分でも記事書きます。</p>
+	<p><a href="http://ngigroup.com">ngi group</a>の広告系エンジニアが気になった記事をスクラップしてます。たまに、自分でも記事を書きます。</p>
 </div>
 
 <?php $info_posts = Scrap::recent_information(); ?>
@@ -12,6 +12,8 @@
 		<p><?=get_the_date()?> <a href="<?=get_permalink($post->ID)?>"><?=the_title()?></a></p>
 	<?php } ?>
 </div>
+
+<br clear="all"/>
 <?php } ?>
 
 <h2>人気タグ</h2>
