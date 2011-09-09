@@ -91,7 +91,7 @@ class Scrap {
 				self::logging_tag_view($tag->name, 'post_view', $post->ID);
 			}
 		} else if ( is_tag() ) {
-			$tag = get_query_var('tag');
+			$tag = urldecode(get_query_var('tag'));
 			self::logging_tag_view($tag, 'search');
 		}
 	}
@@ -127,6 +127,7 @@ class Scrap {
 		$content = $post->post_content;
 		if ( strlen($content)==0 ) return '';
 
+		$content = str_replace(array("\r\n","\r","\n"), '', $content);
 		if ( $len > 0 && mb_strlen($content) > $len ) {
 			$content = mb_substr($content, 0, $len) . $append;
 		}
