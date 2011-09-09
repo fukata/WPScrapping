@@ -1,5 +1,9 @@
 </div> <!-- main -->
 
+<div id="footer">
+	<p>Copyright (C) 2011 <a href="http://fukata.org">fukata.org</a> All Rights Reserved.</p>
+</div>
+
 <!-- Place this tag in your head or just before your close body tag -->
 <script type="text/javascript" src="http://apis.google.com/js/plusone.js">
   {lang: 'ja'}

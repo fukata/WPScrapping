@@ -20,7 +20,7 @@
 <div id="header">
 	<h1 id="logo"><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
 	<div id="header_navi">
-		<span class="navi_item"><a href="">メニュー</a></span>
+		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span>
 	</div>
 </div>
 

@@ -63,6 +63,13 @@ a img {
 	float: left;
 }
 
+#site_description {
+	margin-bottom: 5px;
+	margin-left: 10px;
+	font-style: italic;
+	color: #666;
+}
+
 #main {
 	width: 100%;
 	margin-top: 25px;
@@ -198,4 +205,18 @@ a.pager:hover {
 	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+#footer {
+	float: both;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	padding: 5px 0;
+	background-color: #333;
+	color: #fff;
+}
+
+#footer a {
+	color: #fff;
 }

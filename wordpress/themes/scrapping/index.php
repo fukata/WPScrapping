@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<div id="site_description">
+	<p><a href="http://ngigroup.com">ngi group</a>の広告系エンジニアが気になった記事をスクラップしてます。たまに、自分でも記事書きます。</p>
+</div>
+
 <h2>人気タグ</h2>
 <?php $popular_tags = Scrap::get_popular_tags(50); ?>
 <?php if ( $popular_tags ) { ?>
@@ -31,7 +35,7 @@
 <br clear="all"/>
 
 <h2>最新スクラップ</h2>
-<?php $latest_scraps = get_posts('numberposts=15&category=scrap'); ?>
+<?php $latest_scraps = get_posts('numberposts=10&category=scrap'); ?>
 <?php if ( $latest_scraps ) { ?>
 	<div id="latest_scraps">
 	<?php foreach ($latest_scraps as $scrap) { ?>
@@ -47,5 +51,7 @@
 	</div>
 
 <?php } ?>
+
+<br clear="all"/>
 
 <?php get_footer(); ?>
