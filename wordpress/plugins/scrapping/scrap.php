@@ -187,7 +187,7 @@ class Scrap {
 		global $post;
 		if ( self::is_scrap($post->ID) ) {
 			echo "<!-- BEGIN: OGP by Scrapping -->\n";
-			echo '<meta property="og:title" content="'.self::get_meta_title($post->ID).'" />'."\n";
+			echo '<meta property="og:title" content="'.get_bloginfo('name').' | '.self::get_meta_title($post->ID).'" />'."\n";
 			echo '<meta property="og:type" content="article" />'."\n";
 			echo '<meta property="og:image" content="'.self::get_thumbnail_url($post->ID, 'medium').'" />'."\n";
 			echo '<meta property="image_src" content="'.self::get_thumbnail_url($post->ID, 'medium').'" />'."\n";
