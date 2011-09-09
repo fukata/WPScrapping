@@ -17,6 +17,11 @@
 
 <body>
 
-<h1><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
+<div id="header">
+	<h1 id="logo"><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
+	<div id="header_navi">
+		<span class="navi_item"><a href="">メニュー</a></span>
+	</div>
+</div>
 
 <div id="main">

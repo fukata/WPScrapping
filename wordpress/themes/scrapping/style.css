@@ -40,10 +40,31 @@ a img {
 
 #header {
 	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #333;
+	color: #fff;
+	z-index: 100000;
+}
+
+#header a {
+	color: #fff;
+}
+
+#header_navi {
+	text-align: right;
+	padding: 3px 5px;
+}
+
+#logo {
+	padding: 3px 5px;
+	float: left;
 }
 
 #main {
 	width: 100%;
+	margin-top: 25px;
 }
 
 #container {
@@ -108,6 +129,7 @@ div.scrap div.description a {
 #content div.scrap {
 	border: 1px solid #ccc;
 	text-align: center;
+	margin-top: 10px;
 	padding: 10px;
 }
 
