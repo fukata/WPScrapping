@@ -24,6 +24,7 @@
 	</div>
 <?php } ?>
 
+<br clear="all"/>
 
 <h2>人気スクラップ</h2>
 <?php $popular_scraps = Scrap::get_popular_scraps(); ?>

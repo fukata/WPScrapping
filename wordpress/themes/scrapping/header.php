@@ -20,7 +20,8 @@
 <div id="header">
 	<h1 id="logo"><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
 	<div id="header_navi">
-		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span>
+		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span> |
+		<span class="navi_item"><a href="<?php bloginfo('rss_url'); ?>">RSS</a></span>
 	</div>
 </div>
 
