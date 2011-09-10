@@ -153,7 +153,7 @@ class Scrap {
 		global $wpdb;
 		if (!trim($tag)) return array();
 
-		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN wp_terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND t.name = '%s' AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $tag, $limit) );
+		return $wpdb->get_results( $wpdb->prepare("SELECT p.* FROM $wpdb->posts AS p INNER JOIN $wpdb->term_relationships AS tr ON (tr.object_id = p.id) INNER JOIN $wpdb->term_taxonomy AS tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) INNER JOIN $wpdb->terms AS t ON (t.term_id = tt.term_id) WHERE  p.post_status = 'publish' AND (t.name = '%s' OR t.slug = '%s') AND tt.taxonomy = 'post_tag' ORDER BY p.post_date DESC LIMIT %d", $tag, $tag, $limit) );
 	}
 
 	public static function get_short_description($post, $len=50, $append='...') {
