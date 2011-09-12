@@ -11,6 +11,8 @@ class Scrap {
 
 	const COOKIE_NAME = 'sc';
 
+	const BOTS = '/(zenback bot|Googlebot|Birubot|Twitterbot|UnwindFetchor|JS-Kit|PaperLiBot)/';
+
 	private function __constcurt() {
 	}
 
@@ -88,7 +90,7 @@ class Scrap {
 
 	public static function countup($wp_query) {
 		global $post, $current_site;
-		if ( is_user_logged_in() ) return;
+		if ( is_user_logged_in() || !self::can_countup() ) return;
 
 		if ( is_single() ) {
 			// count up for post
@@ -124,6 +126,16 @@ class Scrap {
 			setcookie(self::COOKIE_NAME, serialize($cookie), $timeout, SITECOOKIEPATH);
 */
 		}
+	}
+
+	public static function can_countup() {
+		$ua = $_SERVER['HTTP_USER_AGENT'];
+
+		if ( preg_match(self::BOTS, $ua) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public static function logging_tag_view($tag, $view_type, $post_id=null) {
@@ -196,5 +208,61 @@ class Scrap {
 			echo '<meta property="og:description" content="'.self::get_short_description($post, 100).'" />'."\n";
 			echo "<!-- END: OGP by Scrapping -->\n";
 		}
+	}
+
+	public static function option_key($key) {
+		return "sc_$key";
+	}
+
+	public static function option($key) {
+		return get_option(self::option_key($key), '');
+	}
+
+	public static function option_categories() {
+		$categories = self::option('categories');
+		if(empty($categories)) {
+			$categories = array();
+		} else {
+			$categories = explode(',', $categories);
+		}
+		return $categories;
+	}
+
+	public static function admin_menu() {
+		add_options_page('Scrapping Options', 'Scrapping', 8, __FILE__, array(Scrap, 'admin_option_form'));
+	}
+
+	public static function admin_whitelist_options($whitelist_options) {
+		$whitelist_options['sc'] = array(
+			self::option_key('categories')
+		);
+		return $whitelist_options;
+	}
+
+	public static function admin_option_form() {
+?>
+<div class="wrap">
+	<h2>Scrapping</h2>
+	<form method="post" action="options.php">
+		<?php wp_nonce_field('sc-options'); ?>
+		<input type="hidden" name="action" value="update" />
+		<input type="hidden" name="option_page" value="sc" />
+
+		<table class="form-table">
+			<tr valign="top">
+				<th scope="row">
+					<p><?php echo __('Scrap Categories'); ?></p>
+				</th>
+				<td>
+					<p><input type="text" name="<?php echo Scrap::option_key('categories'); ?>" value="<?php echo implode(',', Scrap::option_categories()); ?>" size="50"/></p>
+				</td>
+			</tr>
+		</table>
+		<p class="submit">
+			<input type="submit" class="button-primary" value="<?php echo __('Save Changes'); ?>" />
+		</p>
+	</form>
+</div>
+<?php	
 	}
 }
