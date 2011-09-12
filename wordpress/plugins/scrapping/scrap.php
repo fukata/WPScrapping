@@ -2,9 +2,6 @@
 
 class Scrap {
 
-	const CAT_INFO = 56;
-	const CAT_SCRAP = 5;
-
 	const META_URL = 'sc_url';
 	const META_TITLE = 'sc_title';
 	const META_VIEW_COUNT = 'sc_view_count';
@@ -44,7 +41,12 @@ class Scrap {
 	}
 
 	public static function scrap_cats() {
-		return array(self::CAT_SCRAP);
+		$categories = self::option_cat_scrap();
+		if (empty($categories)) {
+			return array();
+		} else {
+			return explode(',', $categories);
+		}
 	}
 
 	public static function get_meta_url($post_id) {
@@ -188,11 +190,11 @@ class Scrap {
 	}
 
 	public static function recent_scraps($limit=10) {
-		return get_posts("numberposts=$limit&category=".self::CAT_SCRAP);
+		return get_posts("numberposts=$limit&category=" . self::option_cat_scrap());
 	}
 
 	public static function recent_information($limit=10) {
-		return get_posts("numberposts=$limit&category=".self::CAT_INFO);
+		return get_posts("numberposts=$limit&category=" . self::option_cat_info());
 	}
 
 	public static function ogp_head() {
@@ -218,14 +220,12 @@ class Scrap {
 		return get_option(self::option_key($key), '');
 	}
 
-	public static function option_categories() {
-		$categories = self::option('categories');
-		if(empty($categories)) {
-			$categories = array();
-		} else {
-			$categories = explode(',', $categories);
-		}
-		return $categories;
+	public static function option_cat_scrap() {
+		return self::option('cat_scrap');
+	}
+
+	public static function option_cat_info() {
+		return self::option('cat_info');
 	}
 
 	public static function admin_menu() {
@@ -233,7 +233,8 @@ class Scrap {
 	}
 
 	public static function admin_register_settings() {
-		register_setting('scrapping', self::option_key('categories'));
+		register_setting('scrapping', self::option_key('cat_scrap'));
+		register_setting('scrapping', self::option_key('cat_info'));
 	}
 
 	public static function admin_option_form() {
@@ -248,7 +249,15 @@ class Scrap {
 					<p><?php echo __('Scrap Categories'); ?></p>
 				</th>
 				<td>
-					<p><input type="text" name="<?php echo Scrap::option_key('categories'); ?>" value="<?php echo implode(',', Scrap::option_categories()); ?>" size="50"/></p>
+					<p><input type="text" name="<?php echo Scrap::option_key('cat_scrap'); ?>" value="<?php echo Scrap::option_cat_scrap(); ?>" size="50"/></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">
+					<p><?php echo __('Information Category'); ?></p>
+				</th>
+				<td>
+					<p><input type="text" name="<?php echo Scrap::option_key('cat_info'); ?>" value="<?php echo Scrap::option_cat_info(); ?>" size="50"/></p>
 				</td>
 			</tr>
 		</table>
