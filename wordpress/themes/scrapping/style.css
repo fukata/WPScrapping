@@ -91,10 +91,10 @@ a:hover {
 }
 
 #site_description {
-	margin-bottom: 5px;
-	margin-left: 10px;
+	margin: 0 10px 5px 10px;
 	font-style: italic;
 	color: #666;
+	text-align: center;
 }
 
 #main {
