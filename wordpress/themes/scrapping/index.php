@@ -19,7 +19,7 @@
 <h2>人気タグ</h2>
 <?php $popular_tags = Scrap::get_popular_tags(50); ?>
 <?php if ( $popular_tags ) { ?>
-	<div id="popular_tags">
+	<div id="popular_tags" class="clearfix">
 		<?php foreach ($popular_tags as $tag) { ?>
 			<span class="tag"><a href="<?=get_term_link($tag->tag,'post_tag')?>" rel="tag"><?=htmlspecialchars($tag->tag)?></a></span>
 		<?php } ?>
@@ -29,9 +29,9 @@
 <br clear="all"/>
 
 <h2>人気スクラップ</h2>
-<?php $popular_scraps = Scrap::get_popular_scraps(); ?>
+<?php $popular_scraps = Scrap::get_popular_scraps(8); ?>
 <?php if ( $popular_scraps ) { ?>
-	<div id="popular_scraps">
+	<div id="popular_scraps" class="clearfix">
 		<?php foreach ($popular_scraps as $scrap) { ?>
 			<div class="scrap">
 				<div class="capture"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>" class="medium_capture"/></a>
@@ -48,9 +48,9 @@
 <br clear="all"/>
 
 <h2>最新スクラップ</h2>
-<?php $latest_scraps = Scrap::recent_scraps(); ?>
+<?php $latest_scraps = Scrap::recent_scraps(8); ?>
 <?php if ( $latest_scraps ) { ?>
-	<div id="latest_scraps">
+	<div id="latest_scraps" class="clearfix">
 	<?php foreach ($latest_scraps as $scrap) { ?>
 		<div class="scrap">
 			<div class="capture"><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'large')?>" class="medium_capture"/></a>

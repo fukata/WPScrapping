@@ -48,7 +48,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-.floatcontainer:after{
+.clearfix:after{
     content: "."; 
     display: block; 
     height: 0; 
@@ -57,11 +57,11 @@ a:hover {
     visibility:hidden;
 }
 	
-.floatcontainer{display: inline-block;} 
+.clearfix{display: inline-block;} 
 
 /* Hides from IE Mac */
-* html .floatcontainer {height: 1%;}
-.floatcontainer{display:block;}
+* html .clearfix {height: 1%;}
+.clearfix{display:block;}
 /* End Hack */ 
 
 #header {
@@ -124,16 +124,27 @@ a:hover {
 #popular_scraps div.scrap,
 #latest_scraps div.scrap {
 	float: left;
-	width: 202px;
-	height: 152px;
-	margin: 5px;
+	width: 232px;
+	height: 157px;
 	position: relative;
-}
-
-.capture {
+	margin-left: 8px;
 	border: 1px solid #ccc;
+	text-align: center;
+	margin-top: 10px;
 }
 
+#search_scraps div.scrap .capture,
+#popular_scraps div.scrap .capture,
+#latest_scraps div.scrap .capture {
+	padding-top: 5px;
+}
+
+#search_scraps div.scrap:nth-child(4n+1),
+#popular_scraps div.scrap:nth-child(4n+1),
+#latest_scraps div.scrap:nth-child(4n+1) {
+	margin-left: 0px;
+}
+	
 img.medium_capture {
 	width: 200px;
 	height: 150px;
@@ -163,7 +174,8 @@ div.scrap div.description a {
 	color: #35E6FF;
 }
 
-#popular_tags {
+#popular_tags,
+#latest_tags {
 	margin-bottom: 5px;
 }
 
@@ -175,7 +187,7 @@ div.scrap div.description a {
 	margin: 0 auto;
 }
 
-#content div.scrap {
+#content > div.scrap {
 	border: 1px solid #ccc;
 	text-align: center;
 	margin-top: 10px;
