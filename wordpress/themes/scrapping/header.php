@@ -26,3 +26,4 @@
 </div>
 
 <div id="main">
+<div id="content">

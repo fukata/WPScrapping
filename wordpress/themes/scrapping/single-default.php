@@ -1,5 +1,3 @@
-<div id="content">
-
 <?php $prev_post = get_adjacent_post(true, '', true); ?>
 <?php if ( $prev_post ) { ?>
 <a href="<?=get_permalink($prev_post)?>" title="<?=get_the_title($prev_post->ID)?>" class="pager"><div id="prev_scrap"><span class="button">&lt;&lt;<span></div></a>
@@ -27,7 +25,3 @@
 </div>
 
 <!-- X:S ZenBackWidget --><script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//s.fukata.org&nsid=95584166460009577%3A%3A99010428838908808&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script><!-- X:E ZenBackWidget -->
-
-</div> <!-- content -->
-
-

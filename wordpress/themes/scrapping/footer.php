@@ -1,5 +1,7 @@
 <br clear="all"/>
 
+</div> <!-- content -->
+
 </div> <!-- main -->
 
 <div id="footer">

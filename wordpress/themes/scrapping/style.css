@@ -136,6 +136,7 @@ div.scrap div.description {
 	color: #fff;
 	opacity: 0.8;
 	width: 100%;
+	text-align: left;
 }
 
 div.scrap div.description p.title {
@@ -168,7 +169,6 @@ div.scrap div.description a {
 	border: 1px solid #ccc;
 	text-align: center;
 	margin-top: 10px;
-	padding: 10px;
 }
 
 #description {
