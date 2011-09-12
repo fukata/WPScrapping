@@ -38,6 +38,16 @@ a img {
 	border: none;
 }
 
+a {
+	color: #115588;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4477bb;
+	text-decoration: underline;
+}
+
 .floatcontainer:after{
     content: "."; 
     display: block; 
@@ -256,4 +266,8 @@ a.pager:hover {
 
 #information {
 	margin-bottom: 5px;
+}
+
+#information p {
+	padding: 2px 0;
 }
