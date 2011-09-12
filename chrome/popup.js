@@ -1,20 +1,31 @@
 $(function(){
+	var localStorage;
+
 	$('#register').click(function(){
+		if (typeof localStorage['blog_url'] === 'undefined' || localStorage['blog_url'] == '') {
+			$('#errors').html("Your need setting Blog URL.<br/>");
+			return;
+		}
 		$('#register').attr('disabled', true).val('Registering...');
 
-		var url = '';
+		var blog_url = localStorage['blog_url'] + '/wp-content/plugins/scrapping/api/register.php';
+		var categories = [];
+		if (typeof localStorage['categories'] !== 'undefined') {
+			categories = localStorage['categories'].split(',');
+		}
+
 		var data = {
 			title: $('#title').val(),
 			url: $('#url').val(),
 			tags: $('#tags').val(),
-			categories: [],
+			categories: categories,
 			description: $('#description').val(),
 			status: $('#status').val()
 		};
 		$.ajax({
 			cache: false,
 			type: 'POST',
-			url: url,
+			url: blog_url,
 			data: data,
 			dataType: 'json',
 			success: function(data, dataType) {
@@ -33,11 +44,21 @@ $(function(){
 				}
 			},
 			error: function(request, textStatus, errorThrown) {
+				// if contain "loginform" in textStatus.
+				if (textStatus === 'parsererror' && request.responseText.match(/loginform/g)) {
+					$('#errors').html("Please Login<br/>");
+				}
 			},
 			complete: function(request, textStatus) {
 				$('#register').attr('disabled', false).val('Register');
 			}
 		});
+	});
+
+	chrome.extension.getBackgroundPage().get_storage(function(_localStorage){
+		localStorage = _localStorage;
+		$('#option_blog_url').text(localStorage['blog_url']);
+		$('#option_categories').text(localStorage['categories']);
 	});
 
 	chrome.extension.getBackgroundPage().current_page_info(function(page_info) {

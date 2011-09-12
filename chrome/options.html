@@ -1,0 +1,44 @@
+<html>
+<head>
+<style type="text/css">
+#console {
+	color: #0000FF;
+	background-color: #C8F1FF;
+	width: 500px;
+	padding: 10px;
+	display: none;
+}
+</style>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<script type="text/javascript">
+function save_options() {
+	localStorage['blog_url'] = $('#blog_url').val();
+	localStorage['categories'] = $('#categories').val();
+
+	$('#console').css('display', 'block').html('Saved');
+	setTimeout(function(){
+		$('#console').css('display', 'none').empty();
+	}, 2000);
+}
+
+function restore_options() {
+	$('#blog_url').val(localStorage['blog_url']);
+	$('#categories').val(localStorage['categories']);
+}
+</script>
+</head>
+<body onload="restore_options();">
+
+<div id="console"></div>
+
+<p>Blog URL: <input type="text" name="blog_url" id="blog_url" size="50"/><br/>
+(Please do not without the trailing slash)</p>
+<p>Categories: <input type="text" name="categories" id="categories" size="30"/><br/>
+(If you specify more than one please enter separated by commas)</p>
+<br/>
+<p><button onclick="save_options();">Save</button></p>
+
+</body>
+</html>

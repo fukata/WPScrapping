@@ -12,3 +12,6 @@ function current_page_info(callback) {
   }); 
 }
 
+function get_storage(callback) {
+	callback(localStorage);
+}

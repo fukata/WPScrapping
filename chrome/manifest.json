@@ -8,6 +8,7 @@
     "popup": "popup.html"
   },
   "background_page": "background.html",
+  "options_page": "options.html",
   "icons": {
     "128": "images/favicon128.png",
     "16": "images/favicon16.png",
