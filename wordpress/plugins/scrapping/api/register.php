@@ -10,9 +10,9 @@ if ( ! empty($errors) ) {
 $errors = sc_register_scrapping($params);
 if ( ! empty($errors) ) {
 	sc_display_error($errors);
+} else {
+	sc_display_success();
 }
-
-sc_display_success();
 
 function sc_get_params() {
 	$params = array();
@@ -91,12 +91,12 @@ function sc_register_scrapping($params) {
 	update_post_meta($post_id, Scrap::META_URL, $params['url']);
 	update_post_meta($post_id, Scrap::META_TITLE, $params['title']);
 	update_post_meta($post_id, Scrap::META_VIEW_COUNT, 0);
+
+	return false;
 }
 
 function sc_post_content($params) {
-	$content = "{$params['description']}";
-	//$content = "<p>{$params['description']}</p>\n";
-	//$content .= "<p><a href=\"{$params['url']}\">{$params['title']}</a></p>";
+	$content = $params['description'];
 	return $content;
 }
 
