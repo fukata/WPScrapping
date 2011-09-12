@@ -38,8 +38,25 @@ a img {
 	border: none;
 }
 
+.floatcontainer:after{
+    content: "."; 
+    display: block; 
+    height: 0; 
+    font-size:0;	
+    clear: both; 
+    visibility:hidden;
+}
+	
+.floatcontainer{display: inline-block;} 
+
+/* Hides from IE Mac */
+* html .floatcontainer {height: 1%;}
+.floatcontainer{display:block;}
+/* End Hack */ 
+
 #header {
 	width: 100%;
+	height: 28px;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -54,12 +71,12 @@ a img {
 
 #header_navi {
 	text-align: right;
-	padding: 3px 5px;
+	padding: 7px 10px;
 	border-bottom: 2px solid #000;
 }
 
 #logo {
-	padding: 3px 5px;
+	padding: 7px 5px;
 	float: left;
 }
 
@@ -72,7 +89,7 @@ a img {
 
 #main {
 	width: 100%;
-	margin-top: 25px;
+	margin-top: 35px;
 }
 
 #main h2 {
