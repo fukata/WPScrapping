@@ -232,11 +232,8 @@ class Scrap {
 		add_options_page('Scrapping Options', 'Scrapping', 8, __FILE__, array(Scrap, 'admin_option_form'));
 	}
 
-	public static function admin_whitelist_options($whitelist_options) {
-		$whitelist_options['sc'] = array(
-			self::option_key('categories')
-		);
-		return $whitelist_options;
+	public static function admin_register_settings() {
+		register_setting('scrapping', self::option_key('categories'));
 	}
 
 	public static function admin_option_form() {
@@ -244,10 +241,7 @@ class Scrap {
 <div class="wrap">
 	<h2>Scrapping</h2>
 	<form method="post" action="options.php">
-		<?php wp_nonce_field('sc-options'); ?>
-		<input type="hidden" name="action" value="update" />
-		<input type="hidden" name="option_page" value="sc" />
-
+		<?php settings_fields('scrapping'); ?>
 		<table class="form-table">
 			<tr valign="top">
 				<th scope="row">
