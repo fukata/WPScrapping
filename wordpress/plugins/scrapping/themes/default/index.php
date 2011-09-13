@@ -38,8 +38,8 @@
 <?php if ( $popular_scraps ) { ?>
 	<div id="popular_scraps" class="ui-grid-b">
 	<?php for ($i=0; $i<count($popular_scraps); $i++) { $scrap=$popular_scraps[$i];?>
-		<div class="ui-block-<?=$blocks[$i%3]?>"><div class=" ui-bar ui-bar-a">
-			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'tiny')?>"/></a>
+		<div class="ui-block-<?=$blocks[$i%3]?>"><div class=" ">
+			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'small')?>"/></a>
 		</div></div>
 	<?php } ?>
 	</div>
@@ -55,8 +55,8 @@
 <?php if ( $latest_scraps ) { ?>
 	<div id="latest_scraps" class="ui-grid-b">
 	<?php for ($i=0; $i<count($latest_scraps); $i++) { $scrap=$latest_scraps[$i];?>
-		<div class="ui-block-<?=$blocks[$i%3]?>"><div class=" ui-bar ui-bar-a">
-			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'tiny')?>"/></a>
+		<div class="ui-block-<?=$blocks[$i%3]?>"><div class=" ">
+			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'small')?>"/></a>
 		</div></div>
 	<?php } ?>
 	</div>
