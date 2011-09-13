@@ -17,13 +17,14 @@
 
 <div data-role="content">
 <?php $scraps = Scrap::get_scrap_by_tag(urldecode(get_query_var('tag'))); ?>
-<?php $blocks = array('a','b','c'); ?>
 <?php if ( $scraps ) { ?>
+	<div style="text-align:center;">
 	<?php foreach ($scraps as $scrap) { ?>
-		<div class="ui-block-<?=$blocks[$i%3]?>"><div class=" ">
-			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'small')?>"/></a>
-		</div></div>
+		<div>
+			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
+		</div>
 	<?php } ?>
+	</div>
 <?php } else { ?>
 	<p>スクラップがありません。</p>
 <?php } ?>
