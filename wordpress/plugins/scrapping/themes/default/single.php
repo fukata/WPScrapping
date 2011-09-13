@@ -8,6 +8,7 @@
 	<title>Scrapping | <?=Scrap::get_meta_title($post->ID)?></title>
 </head>
 <body>
+<div data-role="page">
 
 <div data-role="header">
 	<h1><?=Scrap::get_meta_title($post->ID)?></h1>
@@ -23,5 +24,6 @@
 	<h4>&copy; 2011 fukata.org</h4>
 </div>
 
+</div>
 </body>
 </html>

@@ -8,6 +8,7 @@
 	<title>Scrapping - Smartphone</title>
 </head>
 <body>
+<div data-role="page">
 
 <div data-role="header">
 	<h1>Scrapping</h1>
@@ -68,5 +69,6 @@
 	<h4>&copy; 2011 fukata.org</h4>
 </div>
 
+</div>
 </body>
 </html>
