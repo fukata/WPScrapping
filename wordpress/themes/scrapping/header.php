@@ -19,6 +19,17 @@
 
 <div id="header" class="clearfix">
 	<h1 id="logo"><a href="<?=home_url( '/' )?>"><?=bloginfo('name')?></a></h1>
+	<?php $hot_tags = Scrap::get_hot_tags(); ?>
+	<?php if ($hot_tags) { ?>
+	<div id="hot_tags">
+		<span>注目タグ: </span>
+		<ul>
+		<?php foreach ($hot_tags as $tag) { ?>
+			<li><a href="<?=get_term_link($tag->tag,'post_tag')?>"><?=$tag->tag?></a></li>
+		<?php } ?>
+		</ul>
+	</div>
+	<?php } ?>
 	<div id="header_navi">
 		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span> |
 		<span class="navi_item"><a href="<?php bloginfo('rss_url'); ?>">RSS</a></span>

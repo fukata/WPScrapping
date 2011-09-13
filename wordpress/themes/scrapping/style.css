@@ -288,3 +288,27 @@ a.pager:hover {
 #information p {
 	padding: 2px 0;
 }
+
+#hot_tags {
+	float: left;
+	width: 600px;
+	height: 28px;
+	padding-top: 7px;
+	margin-left: 30px;
+}
+
+#hot_tags span,
+#hot_tags ul {
+	float: left;
+}
+
+#hot_tags ul {
+	width: 500px;
+	float: left;
+	margin-left: 5px;
+}
+
+#hot_tags ul li {
+	float: left;
+	margin-left: 5px;
+}

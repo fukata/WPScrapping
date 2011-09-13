@@ -163,6 +163,11 @@ class Scrap {
 		return $wpdb->get_results( $wpdb->prepare("SELECT r.* FROM sc_tag_rankings AS r WHERE r.status = 'open' ORDER BY r.score DESC LIMIT %d", $limit) );
 	}
 
+	public static function get_hot_tags($limit=3) {
+		global $wpdb;
+		return $wpdb->get_results( $wpdb->prepare("SELECT r.* FROM sc_tag_rankings AS r WHERE r.status = 'open' ORDER BY RAND() LIMIT %d", $limit) );
+	}
+
 	public static function get_scrap_by_tag($tag='',$limit=10) {
 		global $wpdb;
 		if (!trim($tag)) return array();
