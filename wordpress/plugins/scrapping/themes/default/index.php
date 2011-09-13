@@ -15,6 +15,7 @@
 	<h1>Scrapping</h1>
 </div>
 
+<div data-role="content">
 <div data-role="collapsible-set">
 	<div data-role="collapsible" data-collapsed="true">
 		<h3>人気タグ</h3>
@@ -64,6 +65,7 @@
 	<p>スクラップがありません。</p>
 <?php } ?>
 	</div>
+</div>
 </div>
 
 <div data-role="footer">
