@@ -11,20 +11,17 @@
 <body>
 <div data-role="page">
 
-<div data-role="header">
-	<h1><?=Scrap::get_meta_title($post->ID)?></h1>
-</div>
+	<div data-role="header">
+		<h1><?=Scrap::get_meta_title($post->ID)?></h1>
+	</div>
 
-<div data-role="content">
-	<a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>" rel="nofollow"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'medium')?>"/></a>
+	<div data-role="content">
+		<p style="text-align:center;"><a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>" rel="nofollow"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'medium')?>"/></a></p>
 
-	<p><?=Scrap::get_description($post)?></p>
-</div>
+		<p><?=Scrap::get_description($post)?></p>
+	</div>
 
-<div data-role="footer">
-	<h4>&copy; 2011 fukata.org</h4>
-</div>
-
+	<?php include(dirname(__FILE__).'/footer.php'); ?>
 </div>
 </body>
 </html>

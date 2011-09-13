@@ -10,30 +10,25 @@
 </head>
 <body>
 <div data-role="page">
-
-<div data-role="header">
-	<h1>Tag: <?=urldecode(get_query_var('tag'))?></h1>
-</div>
-
-<div data-role="content">
-<?php $scraps = Scrap::get_scrap_by_tag(urldecode(get_query_var('tag'))); ?>
-<?php if ( $scraps ) { ?>
-	<div style="text-align:center;">
-	<?php foreach ($scraps as $scrap) { ?>
-		<div>
-			<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
-		</div>
-	<?php } ?>
+	<div data-role="header">
+		<h1>Tag: <?=urldecode(get_query_var('tag'))?></h1>
 	</div>
-<?php } else { ?>
-	<p>スクラップがありません。</p>
-<?php } ?>
-</div>
 
-<div data-role="footer">
-	<h4>&copy; 2011 fukata.org</h4>
-</div>
+	<div data-role="content">
+	<?php $scraps = Scrap::get_scrap_by_tag(urldecode(get_query_var('tag'))); ?>
+	<?php if ( $scraps ) { ?>
+		<div style="text-align:center;">
+		<?php foreach ($scraps as $scrap) { ?>
+			<div>
+				<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
+			</div>
+		<?php } ?>
+		</div>
+	<?php } else { ?>
+		<p>スクラップがありません。</p>
+	<?php } ?>
 
+	<?php include(dirname(__FILE__).'/footer.php'); ?>
 </div>
 </body>
 </html>
