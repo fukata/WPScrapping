@@ -20,9 +20,8 @@
 	<?php if ( $scraps ) { ?>
 		<div style="text-align:center;">
 		<?php foreach ($scraps as $scrap) { ?>
-			<div>
-				<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
-			</div>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_short_title($scrap->ID)?></a></p>
+			<p>	<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a></p>
 		<?php } ?>
 		</div>
 	<?php } else { ?>
