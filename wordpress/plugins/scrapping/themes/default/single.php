@@ -17,7 +17,7 @@
 	</div>
 
 	<div data-role="content">
-		<p><a href="<?=Scrap::get_meta_url($post->ID)?>"><?=Scrap::get_meta_title($post->ID)?></a></p>
+		<p style="text-align:center;"><a href="<?=Scrap::get_meta_url($post->ID)?>"><?=Scrap::get_meta_title($post->ID)?></a></p>
 		<p style="text-align:center;"><a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>" rel="nofollow"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'medium')?>"/></a></p>
 
 		<p><?=Scrap::get_description($post)?></p>
