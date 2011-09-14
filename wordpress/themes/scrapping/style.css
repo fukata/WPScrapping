@@ -202,6 +202,10 @@ div.scrap div.description a {
 	border: 1px solid #ccc;
 }
 
+#description p {
+	margin: 10px 0px;
+}
+
 #prev_scrap,
 #next_scrap {
 	position: fixed;
