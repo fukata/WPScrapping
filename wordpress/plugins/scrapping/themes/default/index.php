@@ -43,7 +43,7 @@
 	</div>
 
 	<div data-role="content">
-		<?php $popular_tags = Scrap::get_popular_tags(10); ?>
+		<?php $popular_tags = Scrap::get_popular_tags(50); ?>
 		<?php if ( $popular_tags ) { ?>
 		<ul data-role="listview" data-theme="a">
 		<?php foreach ($popular_tags as $tag) { ?>
