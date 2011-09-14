@@ -19,7 +19,7 @@
 		<?php $latest_scraps = Scrap::recent_scraps(1); ?>
 		<?php if ($latest_scraps) { $scrap = $latest_scraps[0]; ?>
 		<div style="text-align:center;">
-			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_short_title($post->ID)?></a></p>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_short_title($scrap->ID)?></a></p>
 			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a></p>
 		</div>
 		<?php } ?>
