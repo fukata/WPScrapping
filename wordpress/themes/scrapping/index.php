@@ -8,7 +8,7 @@
 <?php if ( $info_posts ) { ?>
 <h2>お知らせ</h2>
 <div id="information">
-	<?php foreach ($info_posts as $post) { the_post(); ?>
+	<?php foreach ($info_posts as $post) { ?>
 		<p><?=get_the_date()?> <a href="<?=get_permalink($post->ID)?>"><?=the_title()?></a></p>
 	<?php } ?>
 </div>
