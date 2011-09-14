@@ -124,5 +124,6 @@
 	<?php include(dirname(__FILE__).'/footer.php'); ?>
 </div>
 
+<?php include(dirname(__FILE__).'/ga.php'); ?>
 </body>
 </html>
