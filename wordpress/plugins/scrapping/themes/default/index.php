@@ -37,7 +37,8 @@
 
 <div data-role="page" id="popular_tags">
 
-	<div data-role="header">
+	<div data-role="header" data-position="inline">
+		<a href="#top" data-icon="home">ホーム</a>
 		<h1>人気タグ</h1>
 	</div>
 
@@ -64,7 +65,8 @@
 
 <div data-role="page" id="popular_scraps">
 
-	<div data-role="header">
+	<div data-role="header" data-position="inline">
+		<a href="#top" data-icon="home">ホーム</a>
 		<h1>人気スクラップ</h1>
 	</div>
 
@@ -95,7 +97,8 @@
 
 <div data-role="page" id="latest_scraps">
 
-	<div data-role="header">
+	<div data-role="header" data-position="inline">
+		<a href="#top" data-icon="home">ホーム</a>
 		<h1>最新スクラップ</h1>
 	</div>
 

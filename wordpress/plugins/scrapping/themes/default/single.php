@@ -11,7 +11,8 @@
 <body>
 <div data-role="page">
 
-	<div data-role="header">
+	<div data-role="header" data-position="inline">
+		<a href="#top" data-icon="home">ホーム</a>
 		<h1><?=Scrap::get_meta_title($post->ID)?></h1>
 	</div>
 
