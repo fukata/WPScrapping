@@ -28,6 +28,7 @@
 	<?php } else { ?>
 		<p>スクラップがありません。</p>
 	<?php } ?>
+	</div>
 
 	<?php include(dirname(__FILE__).'/footer.php'); ?>
 </div>
