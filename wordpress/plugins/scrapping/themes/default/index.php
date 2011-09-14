@@ -75,9 +75,8 @@
 	<?php if ( $popular_scraps ) { ?>
 		<div style="text-align:center;">
 		<?php for ($i=0; $i<count($popular_scraps); $i++) { $scrap=$popular_scraps[$i];?>
-			<div>
-				<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
-			</div>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_short_title($scrap->ID)?></a></p>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a></p>
 		<?php } ?>
 		</div>
 	<?php } else { ?>
@@ -107,9 +106,8 @@
 	<?php if ( $latest_scraps ) { ?>
 		<div style="text-align:center;">
 		<?php for ($i=0; $i<count($latest_scraps); $i++) { $scrap=$latest_scraps[$i];?>
-			<div>
-				<a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a>
-			</div>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><?=Scrap::get_short_title($scrap->ID)?></a></p>
+			<p><a href="<?=get_permalink($scrap->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($scrap->ID))?>"><img src="<?=Scrap::get_thumbnail_url($scrap->ID, 'medium')?>"/></a></p>
 		<?php } ?>
 		</div>
 	<?php } else { ?>
