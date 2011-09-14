@@ -1,9 +1,11 @@
 <?php get_header(); ?>
 
 <?php the_post(); ?>
-<h2><?php the_title(); ?></h2>
-<div id="page_content">
-	<?php the_content(); ?>
-</div>
+
+<?php if ( file_exists(dirname(__FILE__).'/page-'.$post->slug.'.php') ) { ?>
+	<?php include(dirname(__FILE__).'/page-'.$post->slug.'.php'); ?>
+<?php } else { ?>
+	<?php include(dirname(__FILE__).'/page-default.php'); ?>
+<?php } ?>
 
 <?php get_footer(); ?>
