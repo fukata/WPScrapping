@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-		<script type="text/javascript" src="<?=plugins_url('scrapping')?>/js/three/Three.js"></script>
+		<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/three/Three.js"></script>
 
-		<script type="text/javascript" src="<?=plugins_url('scrapping')?>/js/three/RequestAnimationFrame.js"></script>
-		<script type="text/javascript" src="<?=plugins_url('scrapping')?>/js/three/Stats.js"></script>
+		<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/three/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/three/Stats.js"></script>
 
 		<script type="text/javascript">
 
