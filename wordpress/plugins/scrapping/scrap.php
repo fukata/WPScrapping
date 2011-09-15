@@ -198,6 +198,10 @@ class Scrap {
 		return get_posts("numberposts=$limit&category=" . self::option_cat_scrap());
 	}
 
+	public static function random_scraps($limit=10) {
+		return get_posts("numberposts=$limit&orderby=rand&category=" . self::option_cat_scrap());
+	}
+
 	public static function recent_information($limit=10) {
 		return get_posts("numberposts=$limit&category=" . self::option_cat_info());
 	}
