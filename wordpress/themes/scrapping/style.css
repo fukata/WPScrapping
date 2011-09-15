@@ -328,3 +328,42 @@ a.pager:hover {
 	float: left;
 	margin-left: 5px;
 }
+
+#down_menu {
+	display: none;
+	position: absolute;
+	top:0;
+	margin-top: 29px;
+	width: 100%;
+}
+
+#down_menu_content {
+	background-color: #666;
+	width: 960px;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: left;
+	border-left: 1px dotted #000;
+	border-bottom: 1px dotted #000;
+	border-right: 1px dotted #000;
+	color: #fff;
+	/*opacity: 0.9;*/
+}
+
+#down_menu_content a {
+	color: #fff;
+}
+
+#down_menu_content a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+#down_menu_content ul {
+	margin-left: 10px;
+}
+
+#down_menu_content ul li {
+	margin-left: 10px;
+}
+

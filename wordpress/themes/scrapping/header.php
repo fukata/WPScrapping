@@ -13,6 +13,7 @@
   <link rel="Shortcut Icon" href="<?php bloginfo('template_directory'); ?>/img/favicon.ico" type="image/x-icon" />
   <?php wp_enqueue_script('jquery'); ?>
   <?php wp_head(); ?>
+  <script type="text/javascript" src="<?=bloginfo('template_url')?>/js/common.js"></script>
 </head>
 
 <body>
@@ -31,8 +32,18 @@
 	</div>
 	<?php } ?>
 	<div id="header_navi">
+		<span class="navi_item"><a href="javascript:void(0);" class="down_menu_toggle"><span class="down_menu_toggle_mark">[+]</span>メニュー</a></span> |
 		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span> |
 		<span class="navi_item"><a href="<?php bloginfo('rss_url'); ?>">RSS</a></span>
+	</div>
+</div>
+
+<div id="down_menu">
+	<div id="down_menu_content">
+		<h4>HTML5的な何か</h4>
+		<ul>
+			<li><a href="<?=home_url('/scrap-cube')?>">Scrap Cube</a></li>
+		</ul>
 	</div>
 </div>
 

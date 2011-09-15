@@ -5,12 +5,6 @@
 </div> <!-- main -->
 
 <div id="footer">
-	<div id="footer_menu">
-		<h4>HTML5的な何か</h4>
-		<ul>
-			<li><a href="<?=home_url('/scrap-cube')?>">Scrap Cube</a></li>
-		</ul>
-	</div>
 	<p>Copyright (C) 2011 <a href="http://fukata.org">fukata.org</a> All Rights Reserved.</p>
 </div>
 
