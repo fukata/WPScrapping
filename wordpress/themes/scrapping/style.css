@@ -279,6 +279,20 @@ a.pager:hover {
 	color: #fff;
 }
 
+#footer_menu {
+	margin: 0 auto;
+	width: 960px;
+	text-align: left;
+}
+
+#footer_menu ul {
+	margin-left: 10px;
+}
+
+#footer_menu li {
+	margin-left: 10px;
+}
+
 #page_content {
 	
 }
