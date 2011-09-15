@@ -55,9 +55,9 @@
 				var materials = [];
 
 				<?php
-					$latest_scraps = Scrap::random_scraps(6);
+					$scraps = Scrap::random_scraps(6);
 					$images = array();
-					foreach ($latest_scraps as $scrap) {
+					foreach ($scraps as $scrap) {
 						$images[] = Scrap::get_thumbnail_url($scrap->ID, 'large');
 					}
 				?>
