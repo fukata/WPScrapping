@@ -32,7 +32,7 @@
 	</div>
 	<?php } ?>
 	<div id="header_navi">
-		<span class="navi_item"><a href="javascript:void(0);" class="down_menu_toggle"><span class="down_menu_toggle_mark">[+]</span>メニュー</a></span> |
+		<span class="navi_item"><a href="javascript:void(0);" class="down_menu_toggle"><span class="down_menu_toggle_mark"></span>メニュー</a></span> |
 		<span class="navi_item"><a href="<?=home_url('/profile')?>">なかの人</a></span> |
 		<span class="navi_item"><a href="<?php bloginfo('rss_url'); ?>">RSS</a></span>
 	</div>
