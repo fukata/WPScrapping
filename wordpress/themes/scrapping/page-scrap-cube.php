@@ -63,7 +63,7 @@
 				?>
 				var texstures = <?=json_encode($images);?>;
 
-				for ( var i = 0; i < 6; i ++ ) {
+				for ( var i = 0; i < texstures.length; i ++ ) {
 					materials.push( [ new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( texstures[i] ) } ) ] );
 				}
 
