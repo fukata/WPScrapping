@@ -331,7 +331,7 @@ a.pager:hover {
 
 #down_menu {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top:0;
 	margin-top: 29px;
 	width: 100%;
