@@ -1,6 +1,21 @@
 $(function(){
 	var localStorage;
 
+	$('#save').click(function(){
+		var post = {
+			title: $('#title').val(),
+			url: $('#url').val(),
+			tags: $('#tags').val(),
+			description: $('#description').val(),
+			status: $('#status').val()
+		};
+
+		chrome.extension.getBackgroundPage().save_cache(post.url, post, function(_post) {
+			$('#console').text('Saved!!');
+			//setTimeout(function(){ window.close(); }, 1000);
+		});
+	});
+
 	$('#register').click(function(){
 		if (typeof localStorage['blog_url'] === 'undefined' || localStorage['blog_url'] == '') {
 			$('#errors').html("Your need setting Blog URL.<br/>");
@@ -14,7 +29,7 @@ $(function(){
 			categories = localStorage['categories'].split(',');
 		}
 
-		var data = {
+		var post = {
 			title: $('#title').val(),
 			url: $('#url').val(),
 			tags: $('#tags').val(),
@@ -26,13 +41,14 @@ $(function(){
 			cache: false,
 			type: 'POST',
 			url: blog_url,
-			data: data,
+			data: post,
 			dataType: 'json',
 			success: function(data, dataType) {
 				$('#console').empty();
 				$('#errors').empty();
 				if ( data.status ) {
 					$('#console').text('Registered!!');
+					chrome.extension.getBackgroundPage().remove_cache(post.url);
 					setTimeout(function(){ window.close(); }, 1000);
 				} else if ( "errors" in data ) {
 					var errors = "";
@@ -65,5 +81,15 @@ $(function(){
 		$('#title').val(page_info.title);
 		$('#url').val(page_info.url);
 		$('#tags').focus();
+
+		chrome.extension.getBackgroundPage().get_cache($('#url').val(), function(post) {
+			if (post) {
+				$('#title').val(post.title);
+				$('#url').val(post.url);
+				$('#tags').val(post.tags);
+				$('#description').val(post.description);
+				$('#status').val(post.status);
+			}
+		});
 	});
 });

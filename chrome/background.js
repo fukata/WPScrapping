@@ -15,3 +15,25 @@ function current_page_info(callback) {
 function get_storage(callback) {
 	callback(localStorage);
 }
+
+function save_cache(url, post, callback) {
+	var md5url = MD5_hexhash(url);
+	localStorage[md5url] = JSON.stringify(post);
+	callback(post);
+}
+
+function remove_cache(url) {
+	var md5url = MD5_hexhash(url);
+	if (md5url in localStorage) {
+		delete localStorage[md5url];
+	}
+}
+
+function get_cache(url, callback) {
+	var md5url = MD5_hexhash(url);
+	if (md5url in localStorage) {
+		callback(JSON.parse(localStorage[md5url]));
+	} else {
+		callback(false);
+	}
+}
