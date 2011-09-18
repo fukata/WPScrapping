@@ -22,11 +22,13 @@ function save_cache(url, post, callback) {
 	callback(post);
 }
 
-function remove_cache(url) {
+function remove_cache(url, callback) {
 	var md5url = MD5_hexhash(url);
 	if (md5url in localStorage) {
 		delete localStorage[md5url];
 	}
+
+	callback();
 }
 
 function get_cache(url, callback) {

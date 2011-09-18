@@ -1,6 +1,17 @@
 $(function(){
 	var localStorage;
 
+	$('#reset').click(function(){
+		chrome.extension.getBackgroundPage().current_page_info(function(page_info) {
+			$('#title').val(page_info.title);
+			$('#url').val(page_info.url);
+			$('#tags').focus();
+			$('#tags').val('');
+			$('#description').val('');
+			$('#status').val('');
+		});
+	});
+
 	$('#save').click(function(){
 		var post = {
 			title: $('#title').val(),
@@ -12,7 +23,7 @@ $(function(){
 
 		chrome.extension.getBackgroundPage().save_cache(post.url, post, function(_post) {
 			$('#console').text('Saved!!');
-			//setTimeout(function(){ window.close(); }, 1000);
+			setTimeout(function(){ $('#console').text(''); }, 1000);
 		});
 	});
 
