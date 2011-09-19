@@ -22,7 +22,7 @@
     <?php } ?>
 </div>
 
-<div class="scrap">
+<div class="single_scrap">
 	<?php if (ScrapPostPluginManager::has_plugin($post)) { ?>
 		<?=ScrapPostPluginManager::convert_content($post)?>
 	<?php } else { ?>

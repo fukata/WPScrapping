@@ -8,7 +8,7 @@ class Amazon extends ScrapPostPlugin {
 		$tracking_id = Scrap::option_amazon_tracking_id();
 		$asins = $matches[1];
 		$frame = <<<EOS
-<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=$tracking_id&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=$asins" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<iframe src="http://rcm-jp.amazon.co.jp/e/cm?lt1=_blank&bc1=CCCCCC&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=$tracking_id&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=$asins" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 EOS;
 		return $frame;
 	}

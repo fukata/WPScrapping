@@ -191,9 +191,15 @@ div.scrap div.description a {
 }
 
 #content > div.scrap {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#content > div.single_scrap {
 	border: 1px solid #ccc;
 	text-align: center;
 	margin-top: 10px;
+	padding: 10px;
 }
 
 #description {
