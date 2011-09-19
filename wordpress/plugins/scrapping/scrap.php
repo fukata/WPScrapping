@@ -237,6 +237,10 @@ class Scrap {
 		return self::option('cat_info');
 	}
 
+	public static function option_amazon_tracking_id() {
+		return self::option('amazon_tracking_id');
+	}
+
 	public static function admin_menu() {
 		add_options_page('Scrapping Options', 'Scrapping', 8, __FILE__, array(Scrap, 'admin_option_form'));
 	}
@@ -244,6 +248,7 @@ class Scrap {
 	public static function admin_register_settings() {
 		register_setting('scrapping', self::option_key('cat_scrap'));
 		register_setting('scrapping', self::option_key('cat_info'));
+		register_setting('scrapping', self::option_key('amazon_tracking_id'));
 	}
 
 	public static function admin_option_form() {
@@ -267,6 +272,14 @@ class Scrap {
 				</th>
 				<td>
 					<p><input type="text" name="<?php echo Scrap::option_key('cat_info'); ?>" value="<?php echo Scrap::option_cat_info(); ?>" size="50"/></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">
+					<p><?php echo __('Amazon Tracking ID'); ?></p>
+				</th>
+				<td>
+					<p><input type="text" name="<?php echo Scrap::option_key('amazon_tracking_id'); ?>" value="<?php echo Scrap::option_amazon_tracking_id(); ?>" size="50"/></p>
 				</td>
 			</tr>
 		</table>

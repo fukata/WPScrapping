@@ -9,6 +9,7 @@ Author URI: http://fukata.org
 */
 require_once(dirname(__FILE__).'/scrap.php');
 require_once(dirname(__FILE__).'/scrap_theme.php');
+require_once(dirname(__FILE__).'/scrap_post_plugin.php');
 
 add_action('parse_query', array(Scrap, 'countup'));
 add_action('wp_head', array(Scrap, 'ogp_head'));
@@ -16,4 +17,5 @@ add_action('admin_init', array(Scrap, 'admin_register_settings'));
 add_action('admin_menu', array(Scrap, 'admin_menu'));
 
 $scrap_theme = new ScrapTheme();
+ScrapPostPluginManager::load_all();
 ?>

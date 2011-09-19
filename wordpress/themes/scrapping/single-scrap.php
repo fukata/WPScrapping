@@ -23,8 +23,12 @@
 </div>
 
 <div class="scrap">
-	<a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>" rel="nofollow"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'large')?>" class="large_capture"/></a>
-	<p><a href="<?=Scrap::get_meta_url($post->ID)?>" rel="nofollow"><?=htmlspecialchars(Scrap::get_meta_title($post->ID))?></a></p>
+	<?php if (ScrapPostPluginManager::has_plugin($post)) { ?>
+		<?=ScrapPostPluginManager::convert_content($post)?>
+	<?php } else { ?>
+		<a href="<?=Scrap::get_meta_url($post->ID)?>" title="<?=htmlspecialchars(Scrap::get_meta_title($post->ID))?>" rel="nofollow"><img src="<?=Scrap::get_thumbnail_url($post->ID, 'large')?>" class="large_capture"/></a>
+		<p><a href="<?=Scrap::get_meta_url($post->ID)?>" rel="nofollow"><?=htmlspecialchars(Scrap::get_meta_title($post->ID))?></a></p>
+	<?php } ?>
 </div>
 
 <div id="description">
